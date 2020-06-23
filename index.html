@@ -8,7 +8,6 @@
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -22,13 +21,13 @@
     <div class="container-fluid">
         <div class="row">   
             <div class="col-md-3">
-                    <form>
-                        <label for="inputSearch"><b>Search for a City:</b></label>
+                    <form id="search-form">
+                        <label for="search-input"><b>Search for a City:</b></label>
                         <div class="input-group mb-4">
-                            <input type="search" class="form-control" id="search" placeholder="Search" aria-describedby="button-addon5">
+                            <input type="text" class="form-control" id="search-input" placeholder="Search" aria-describedby="button-addon5">
                             <div class="input-group-append">
-                                <button id="button-addon5" type="submit" class="btn btn-primary">
-                                    <i class="fa fa-search"></i>
+                                <button id="search-btn" type="submit" class="btn btn-primary">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -43,7 +42,7 @@
             <div class="col-md-9">
                 <div class="row">
                     <div class= "container-fluid p-3 my-3 border">
-                    <h1>Choose a city</h1>
+                    <h1 id=cityName>Choose a city</h1>
                     <br>
                     <p>Temperature: </p>
                     <br>
@@ -60,49 +59,49 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-2 container p-3 my-3 bg-primary text-white">
-                        <h2>8/15/2019</h1>
+                        <h2>Choose a city</h1>
                         <br>
                         <p>ICON</p>
                         <br>
-                        <p>Temp: 86.84 F</p>
+                        <p>Temp: </p>
                         <br>
-                        <p>Humidity: 43%</p>
+                        <p>Humidity:</p>
                     </div>
                     <div class="col-sm-2 container p-3 my-3 bg-primary text-white">
-                        <h2>8/15/2019</h1>
+                        <h2>Choose a city</h1>
                             <br>
                             <p>ICON</p>
                             <br>
-                            <p>Temp: 86.84 F</p>
+                            <p>Temp: </p>
                             <br>
-                            <p>Humidity: 43%</p>
+                            <p>Humidity: </p>
                     </div>
                     <div class="col-sm-2 container p-3 my-3 bg-primary text-white">
-                        <h2>8/15/2019</h1>
+                        <h2>Choose a city</h1>
                             <br>
                             <p>ICON</p>
                             <br>
-                            <p>Temp: 86.84 F</p>
+                            <p>Temp: </p>
                             <br>
-                            <p>Humidity: 43%</p>
+                            <p>Humidity: </p>
                     </div>
                     <div class="col-sm-2 container p-3 my-3 bg-primary text-white">
-                        <h2>8/15/2019</h1>
+                        <h2>Choose a city</h1>
                             <br>
                             <p>ICON</p>
                             <br>
-                            <p>Temp: 86.84 F</p>
+                            <p>Temp: </p>
                             <br>
-                            <p>Humidity: 43%</p>
+                            <p>Humidity: </p>
                     </div>
                     <div class="col-sm-2 container p-3 my-3 bg-primary text-white">
-                        <h2>8/15/2019</h1>
+                        <h2>Choose a city</h1>
                             <br>
                             <p>ICON</p>
                             <br>
-                            <p>Temp: 86.84 F</p>
+                            <p>Temp: </p>
                             <br>
-                            <p>Humidity: 43%</p>
+                            <p>Humidity: </p>
                     </div>
                 </div>
             </div>
@@ -120,6 +119,7 @@ integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfoo
 integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://use.fontawesome.com/d72ac57639.js"></script>
 <script src="script.js"></script>
 
 </html>

@@ -1,0 +1,54 @@
+// necessary variables
+var city = "";
+// necessary Html elements
+
+
+// call render cities function from begginning
+
+//event listener when submit button is clicked call cityweather function and store city function and render cities
+
+$("#search-btn").on("click", function(event) {
+    event.preventDefault();
+    // This line grabs the input from the textbox
+    city = $("#search-input").val().trim();
+    // JSON.stringify(city);
+    console.log(city);
+    cityWeather()
+    // storeCity()
+    // renderCities()
+  });
+
+
+// city weather function update the current city weather and forecasted weather for next days
+function cityWeather() {
+
+    const queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city +  "&appid=abad0bc19c898043728c6921d1ef1d87";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+
+// Log the resulting object
+console.log(response);
+console.log(response.name);
+$("#cityName").text(response.name);
+
+})}
+
+var curday = function(sp){
+    today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //As January is 0.
+    var yyyy = today.getFullYear();
+    
+    if(dd<10) dd='0'+dd;
+    if(mm<10) mm='0'+mm;
+    return (mm+sp+dd+sp+yyyy);
+    };
+    console.log(curday('/'));
+    console.log(curday('-'));
+
+    
+// storecity function store a new city on the local storage
+// render cities function grab local storage array for cities and create buttons on the right place
