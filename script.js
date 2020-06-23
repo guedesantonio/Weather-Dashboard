@@ -32,9 +32,14 @@ function cityWeather() {
 // Log the resulting object
 console.log(response);
 console.log(response.name);
-$("#cityName").text(response.name);
-
+$("#cityName").text(response.name + " ("+ curday('/') +") ");
+$('#wicon').attr('class', " ");
+var iconcode = response.weather[0].icon;
+var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+$('#wicon').attr('src', iconurl);
 })}
+
+// current day variable 
 
 var curday = function(sp){
     today = new Date();
@@ -47,8 +52,7 @@ var curday = function(sp){
     return (mm+sp+dd+sp+yyyy);
     };
     console.log(curday('/'));
-    console.log(curday('-'));
 
-    
+
 // storecity function store a new city on the local storage
 // render cities function grab local storage array for cities and create buttons on the right place
