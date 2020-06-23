@@ -14,6 +14,7 @@ $("#search-btn").on("click", function(event) {
     // JSON.stringify(city);
     console.log(city);
     cityWeather()
+    // cityForecast()
     // storeCity()
     // renderCities()
   });
@@ -32,11 +33,16 @@ function cityWeather() {
 // Log the resulting object
 console.log(response);
 console.log(response.name);
+// changing city name and date
 $("#cityName").text(response.name + " ("+ curday('/') +") ");
 $('#wicon').attr('class', " ");
 var iconcode = response.weather[0].icon;
 var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
 $('#wicon').attr('src', iconurl);
+// changing city temperature
+// changing city Humidity
+// 
+
 })}
 
 // current day variable 
