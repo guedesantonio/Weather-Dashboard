@@ -1,5 +1,7 @@
 // necessary variables
 var city = "";
+var lat = "";
+var lon = "";
 // necessary Html elements
 
 
@@ -30,20 +32,40 @@ function cityWeather() {
       method: "GET"
     }).then(function(response) {
 
-// Log the resulting object
-console.log(response);
-console.log(response.name);
-// changing city name and date
-$("#cityName").text(response.name + " ("+ curday('/') +") ");
-$('#wicon').attr('class', " ");
-var iconcode = response.weather[0].icon;
-var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-$('#wicon').attr('src', iconurl);
-// changing city temperature
-// changing city Humidity
-// 
+    // Log the resulting object
+    console.log(response);
+    console.log(response.name);
+    // changing city name and date
+    $("#cityName").text(response.name + " ("+ curday('/') +") ");
+    $('#wicon').attr('class', " ");
+    var iconcode = response.weather[0].icon;
+    var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+    $('#wicon').attr('src', iconurl);
+    // changing city temperature
+    $("#tempMain").text("Temperature: " + response.main.temp);
+    // changing city Humidity
+    $("#humMain").text("Humidity: " + response.main.humidity);
+    // chnging wind speed
+    $("#windMain").text("Wind Speed: " + response.wind.speed);
+    // getting coordenates to use on UV Index
+    lat = JSON.stringify(response.coord.lat);
+    lon = JSON.stringify(response.coord.lon);
+    // getting uv index trough new ajax
+        const queryURL2 = "https://api.openweathermap.org/data/2.5/uvi?lat="+ lat + "&lon=" + lon + "&appid=abad0bc19c898043728c6921d1ef1d87";
 
-})}
+        $.ajax({
+            url: queryURL2,
+            method: "GET"
+        }).then(function(response) {
+            // changing wind speed
+            $("#UVI").text("UV index: " + response.value );
+        })
+})
+
+
+
+
+}
 
 // current day variable 
 
