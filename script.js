@@ -61,8 +61,20 @@ function cityWeather() {
             $("#UVI").text(response.value );
             
 
-            if (response.value < 10 ) {
-                $("#UVI").attr('style',  'background-color: #ef0505');
+            if (response.value > 10 ) {
+                $("#UVI").attr('style',  'background-color: #8A2BE2');
+
+            } else if (response.value > 7 ) {
+                $("#UVI").attr('style',  'background-color: #FF0000');
+
+            } else if (response.value > 5 ) {
+                $("#UVI").attr('style',  'background-color: #FF8C00');
+
+            } else if (response.value > 2 ) {
+                $("#UVI").attr('style',  'background-color: #FFD700	');
+
+            } else {
+                $("#UVI").attr('style',  'background-color: #008000 ');
 
             }
         })
