@@ -16,7 +16,7 @@ $("#search-btn").on("click", function(event) {
     // JSON.stringify(city);
     console.log(city);
     cityWeather()
-    // cityForecast()
+    
     // storeCity()
     // renderCities()
   });
@@ -78,6 +78,15 @@ function cityWeather() {
 
             }
         })
+
+         // getting forecast trough new ajax
+         const queryURL3 = "https://api.openweathermap.org/data/2.5/forecast?lat="+ lat + "&lon=" + lon + "&appid=abad0bc19c898043728c6921d1ef1d87";
+         $.ajax({
+             url: queryURL3,
+             method: "GET"
+         }).then(function(response) {
+             console.log(response);
+         })
 })
 
 
@@ -98,6 +107,9 @@ var curday = function(sp){
     return (mm+sp+dd+sp+yyyy);
     };
     console.log(curday('/'));
+
+
+    // cityForecast Function execute the ajax the city forecast api and modify html
 
 
 // storecity function store a new city on the local storage
