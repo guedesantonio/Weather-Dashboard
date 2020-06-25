@@ -58,7 +58,13 @@ function cityWeather() {
             method: "GET"
         }).then(function(response) {
             // changing wind speed
-            $("#UVI").text("UV index: " + response.value );
+            $("#UVI").text(response.value );
+            
+
+            if (response.value < 10 ) {
+                $("#UVI").attr('style',  'background-color: #ef0505');
+
+            }
         })
 })
 
