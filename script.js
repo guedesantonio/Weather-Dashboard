@@ -25,6 +25,7 @@ function init() {
 
 // render cities function grab local storage array for cities and create buttons on the right place
 function renderCities() {
+    $("#btn-container").empty();
 
  cities.forEach(myFunction);
 
@@ -52,11 +53,8 @@ $("#search-btn").on("click", function(event) {
     // JSON.stringify(city);
     console.log(city);
     cityWeather()
-    // Add new city to cities array and clear input
-     cities.push(city);
+    //clear input
      $("#search-form").trigger("reset");
-     storeCity()
-    renderCities()
   });
 
 
@@ -75,6 +73,11 @@ function cityWeather() {
     console.log(response.name);
     // changing city name and date
     $("#cityName").text(response.name );
+    // Add new city to cities array 
+    cities.push(response.name);
+    storeCity()
+    renderCities()
+    // adding icon
     $('#wicon').attr('class', " ");
     var iconcode = response.weather[0].icon;
     var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
