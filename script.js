@@ -7,6 +7,41 @@ var cities = [];
 
 
 // call render cities function from begginning
+init()
+
+function init() {
+    // Get stored cities from localStorage
+    // Parsing the JSON string to an object
+    var storedCities = JSON.parse(localStorage.getItem("cities"));
+  
+    // If cities were retrieved from localStorage, update the cities array to it
+    if (storedCities !== null) {
+      cities = storedCities;
+    }
+  
+    // Render todos to the DOM
+    renderCities();
+  }
+
+// render cities function grab local storage array for cities and create buttons on the right place
+function renderCities() {
+
+ cities.forEach(myFunction);
+
+ function myFunction(i) {
+     // Create a variable called "btnCity" and set the variable equal to a new btn.
+     const btnCity = $("<button>");
+
+     //Give each "btnCity" class
+     btnCity.addClass("btn btn-outline-secondary btn-light text-left");
+     btnCity.attr("type","button");
+     btnCity.text(i);
+     $("#btn-container").prepend(btnCity);
+
+ }
+
+
+}
 
 //event listener when submit button is clicked call cityweather function and store city function and render cities
 
@@ -21,7 +56,7 @@ $("#search-btn").on("click", function(event) {
      cities.push(city);
      $("#search-form").trigger("reset");
      storeCity()
-    // renderCities()
+    renderCities()
   });
 
 
@@ -134,10 +169,8 @@ var curday = function(sp){
 
 
 // storecity function store a new city on the local storage
+
 function storeCity() {
     // Stringify and set "todos" key in localStorage to todos array
     localStorage.setItem("cities", JSON.stringify(cities));
   }
-
-
-// render cities function grab local storage array for cities and create buttons on the right place
