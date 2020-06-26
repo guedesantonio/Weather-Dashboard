@@ -36,7 +36,7 @@ function cityWeather() {
     console.log(response);
     console.log(response.name);
     // changing city name and date
-    $("#cityName").text(response.name + " ("+ curday('/') +") ");
+    $("#cityName").text(response.name );
     $('#wicon').attr('class', " ");
     var iconcode = response.weather[0].icon;
     var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
@@ -86,6 +86,23 @@ function cityWeather() {
              method: "GET"
          }).then(function(response) {
              console.log(response);
+
+     
+             $("#cityName").text(response.name);
+    $('#wicon').attr('class', " ");
+    var iconcode = response.weather[0].icon;
+    var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+    $('#wicon').attr('src', iconurl);
+    // changing city temperature
+    $("#tempMain").text("Temperature: " + response.main.temp);
+    // changing city Humidity
+    $("#humMain").text("Humidity: " + response.main.humidity);
+    // chnging wind speed
+    $("#windMain").text("Wind Speed: " + response.wind.speed);
+
+
+
+
          })
 })
 
@@ -94,7 +111,10 @@ function cityWeather() {
 
 }
 
-// current day variable 
+// setting up the days days variable 
+
+for (i = 0; i < 6; i++) {
+   
 
 var curday = function(sp){
     today = new Date();
@@ -102,12 +122,14 @@ var curday = function(sp){
     var mm = today.getMonth()+1; //As January is 0.
     var yyyy = today.getFullYear();
     
-    if(dd<10) dd='0'+dd;
-    if(mm<10) mm='0'+mm;
-    return (mm+sp+dd+sp+yyyy);
-    };
-    console.log(curday('/'));
+    var cd = dd + i ;
 
+    if(cd<10) cd='0'+cd;
+    if(mm<10) mm='0'+mm;
+    return (cd+sp+mm+sp+yyyy);
+    };
+    $("#"+i).text(curday('/'));
+}
 
     // cityForecast Function execute the ajax the city forecast api and modify html
 
