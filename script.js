@@ -42,11 +42,11 @@ function cityWeather() {
     var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
     $('#wicon').attr('src', iconurl);
     // changing city temperature
-    $("#tempMain").text("Temperature: " + response.main.temp);
+    $("#tempMain").text("Temperature: " + response.main.temp + " ºF" );
     // changing city Humidity
-    $("#humMain").text("Humidity: " + response.main.humidity);
+    $("#humMain").text("Humidity: " + response.main.humidity + "%" );
     // chnging wind speed
-    $("#windMain").text("Wind Speed: " + response.wind.speed);
+    $("#windMain").text("Wind Speed: " + response.wind.speed + " MPH");
     // getting coordenates to use on UV Index
     lat = JSON.stringify(response.coord.lat);
     lon = JSON.stringify(response.coord.lon);
@@ -86,20 +86,19 @@ function cityWeather() {
              method: "GET"
          }).then(function(response) {
              console.log(response);
-
-     
-             $("#cityName").text(response.name);
-    $('#wicon').attr('class', " ");
-    var iconcode = response.weather[0].icon;
-    var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-    $('#wicon').attr('src', iconurl);
-    // changing city temperature
-    $("#tempMain").text("Temperature: " + response.main.temp);
-    // changing city Humidity
-    $("#humMain").text("Humidity: " + response.main.humidity);
-    // chnging wind speed
-    $("#windMain").text("Wind Speed: " + response.wind.speed);
-
+            
+            //  updating forecast divs
+             for (i = 0; i < 6; i++) {
+                // updating icon
+             $("#i"+ i).attr('class', " ");
+             var iconcode = response.list[i].weather[0].icon;
+             var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+             $("#i"+ i).attr('src', iconurl);
+                // updating temp
+             $("#iTemp" + i).text("Temp: " + response.list[i].main.temp + " ºF");
+                // updating Humidity
+             $("#iHum" + i).text("Humidity: " + response.list[i].main.humidity + "%");
+             }
 
 
 
