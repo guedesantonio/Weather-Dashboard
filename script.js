@@ -2,6 +2,7 @@
 var city = "";
 var lat = "";
 var lon = "";
+var cities = [];
 // necessary Html elements
 
 
@@ -16,8 +17,10 @@ $("#search-btn").on("click", function(event) {
     // JSON.stringify(city);
     console.log(city);
     cityWeather()
-    
-    // storeCity()
+    // Add new city to cities array and clear input
+     cities.push(city);
+     $("#search-form").trigger("reset");
+     storeCity()
     // renderCities()
   });
 
@@ -79,7 +82,7 @@ function cityWeather() {
             }
         })
 
-         // getting forecast trough new ajax
+             // Forecast ajax to get the city forecast api and modify html
          const queryURL3 = "https://api.openweathermap.org/data/2.5/forecast?lat="+ lat + "&lon=" + lon + "&appid=abad0bc19c898043728c6921d1ef1d87";
          $.ajax({
              url: queryURL3,
@@ -106,8 +109,6 @@ function cityWeather() {
 })
 
 
-
-
 }
 
 // setting up the days days variable 
@@ -130,8 +131,13 @@ var curday = function(sp){
     $("#"+i).text(curday('/'));
 }
 
-    // cityForecast Function execute the ajax the city forecast api and modify html
 
 
 // storecity function store a new city on the local storage
+function storeCity() {
+    // Stringify and set "todos" key in localStorage to todos array
+    localStorage.setItem("cities", JSON.stringify(cities));
+  }
+
+
 // render cities function grab local storage array for cities and create buttons on the right place
