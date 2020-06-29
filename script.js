@@ -85,6 +85,7 @@ function cityWeather() {
         console.log(response.name);
         // changing city name and date
         $("#cityName").text(response.name);
+        $("#currentDate").text(convertTimestamptoTime(response.dt))
         // Add new city to cities array 
         cities.push(response.name);
         storeCity()
@@ -155,8 +156,10 @@ function cityWeather() {
                 $("#iHum" + i).text("Humidity: " + response.list[i].main.humidity + "%");
 
                  //  getting dateText forecast for only 12pm each day
-        
-                $("#" + i).text(response.list[j].dt_txt);
+                
+                //  MUDAR DATA PARA FORMATO X/X/XX!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                
+                $("#" + i).text(convertTimestamptoTime(response.list[j].dt));
                 j+=8;
                 
 
@@ -176,24 +179,23 @@ function cityWeather() {
 
 }
 
-// setting up the days days variable 
 
 
 
+function convertTimestamptoTime(unixTimestamp) { 
 
-var curday = function (sp) {
+    // convert to milliseconds and  
+    // then create a new Date object 
+    dateObj = new Date(unixTimestamp * 1000); 
+    utcString = dateObj.toUTCString(); 
+    console.log(utcString);
+    time = utcString.slice(0, 16); 
+    return time ;
+    
+} 
 
-    today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //As January is 0.
-    var yyyy = today.getFullYear();
 
-    if (dd < 10) dd = '0' + dd;
-    if (mm < 10) mm = '0' + mm;
-    return (mm + sp + dd + sp + yyyy);
 
-}
-$("#currentDate").text(curday('/'));
 
 
 
