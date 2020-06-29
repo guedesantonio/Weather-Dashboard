@@ -3,7 +3,7 @@ var city = "";
 var lat = "";
 var lon = "";
 var cities = [];
-
+var forecastTemp = 0 ;
 
 
 
@@ -61,12 +61,13 @@ $("#search-btn").on("click", function (event) {
 
 //event listener when city button is clicked call cityweather function
 
-$(".cityBtn").on("click", function (event) {
+$("#btn-container").on("click", function (event) {
     event.preventDefault();
     // This line grabs the input from the textbox
+    if (this.type = "btn" ) {
     city = this.id;
     cityWeather()
-
+    }
 });
 
 
@@ -99,11 +100,12 @@ function cityWeather() {
         var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
         $('#wicon').attr('src', iconurl);
         // changing city temperature
-        $("#tempMain").text("Temperature: " + response.main.temp + " ºF");
+        var mainTemp = convertKelvinToCelsius(response.main.temp)
+        $("#tempMain").text("Temperature: " + mainTemp + " ºC");
         // changing city Humidity
         $("#humMain").text("Humidity: " + response.main.humidity + "%");
         // chnging wind speed
-        $("#windMain").text("Wind Speed: " + response.wind.speed + " MPH");
+        $("#windMain").text("Wind Speed: " + (Math.floor(10*(response.wind.speed * 1.609344))/10) + " KPH");
         // getting coordenates to use on UV Index
         lat = JSON.stringify(response.coord.lat);
         lon = JSON.stringify(response.coord.lon);
@@ -154,7 +156,8 @@ function cityWeather() {
                 var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
                 $("#i" + i).attr('src', iconurl);
                 // updating temp
-                $("#iTemp" + i).text("Temp: " + response.list[i].main.temp + " ºF");
+                forecastTemp = convertKelvinToCelsius(response.list[i].main.temp)
+                $("#iTemp" + i).text("Temp: " + forecastTemp + " ºC");
                 // updating Humidity
                 $("#iHum" + i).text("Humidity: " + response.list[i].main.humidity + "%");
 
@@ -198,8 +201,13 @@ function convertTimestamptoTime(unixTimestamp) {
 } 
 
 
-
-
+function convertKelvinToCelsius(kelvin) {
+	if (kelvin < (0)) {
+		return 'below absolute zero (0 K)';
+	} else {
+		return (Math.floor(10*(kelvin-273.15))/10) ;
+	}
+}
 
 
 
