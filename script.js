@@ -61,13 +61,14 @@ $("#search-btn").on("click", function (event) {
 
 //event listener when city button is clicked call cityweather function
 
-$("#btn-container").on("click", function (event) {
+$("#btn-container").on("click", "button", function (event) {
     event.preventDefault();
     // This line grabs the input from the textbox
-    if (this.type = "btn" ) {
-    city = this.id;
-    cityWeather()
-    }
+
+        city = $(this).attr("id");
+        cityWeather()
+    
+    
 });
 
 
@@ -194,7 +195,7 @@ function convertTimestamptoTime(unixTimestamp) {
     // then create a new Date object 
     dateObj = new Date(unixTimestamp * 1000); 
     utcString = dateObj.toUTCString(); 
-    console.log(utcString);
+    
     time = utcString.slice(0, 16); 
     return time ;
     
