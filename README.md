@@ -20,9 +20,9 @@ Completed.
 You can find the live site at: https://guedesantonio.github.io/Weather-Dashboard/
 
 ## References
-https://getbootstrap.com/ - Bootstrap library
-https://jquery.com/ - jQuery library
-https://momentjs.com/ - Moment.js library
-https://fontawesome.com/ - Free Icons!
-https://developer.mozilla.org/en-US/ - Various documentation
-https://stackoverflow.com/ - Questions & Answers
+1. https://getbootstrap.com/ - Bootstrap library
+2. https://jquery.com/ - jQuery library
+3. https://momentjs.com/ - Moment.js library
+4. https://fontawesome.com/ - Free Icons!
+5. https://developer.mozilla.org/en-US/ - Various documentation
+6. https://stackoverflow.com/ - Questions & Answers
