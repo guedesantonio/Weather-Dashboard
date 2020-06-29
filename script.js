@@ -87,9 +87,12 @@ function cityWeather() {
         $("#cityName").text(response.name);
         $("#currentDate").text(convertTimestamptoTime(response.dt))
         // Add new city to cities array 
-        cities.push(response.name);
-        storeCity()
-        renderCities()
+        if (cities.indexOf(response.name) > -1) {
+        } else {
+            cities.push(response.name);
+            storeCity()
+            renderCities()
+        }
         // adding icon
         $('#wicon').attr('class', " ");
         var iconcode = response.weather[0].icon;
